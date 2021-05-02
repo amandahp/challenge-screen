@@ -1,0 +1,1 @@
+export { getInstallment } from './installment'
