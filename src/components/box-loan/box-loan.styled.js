@@ -17,7 +17,8 @@ export const BoxLoan = styled.div`
     font-size:1.5em;
     font-family: 'Lato', sans-serif;
     line-height: 1.5;
-    button { 
+    button {
+      margin-left: 10px;
       color: ${theme.color?.darkBlue};
       border:1px solid ${theme.color?.darkBlue};
       background-color: ${theme.color?.light};
