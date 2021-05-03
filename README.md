@@ -4,7 +4,7 @@
 <p align="center"> EN: Creation of a screen, consuming API (https://testfrontend.pontte.com.br/) </p>
 <p align="center">EN: Application access path: http://localhost:3000</p>
 <p>Demonstração/ Demonstration:</p>
-![enter image description here](https://i.ibb.co/6wvyVrC/index.jpg)
+![demonstracao](https://i.ibb.co/9gwpzc5/index.jpg)
 
 
 ### Pré-requisitos / Prerequisites
