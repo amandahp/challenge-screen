@@ -32,5 +32,8 @@ $ npm install || yarn
 # Execute a aplicação / Run the application
 $ npm start || yarn start
 
+# Execute os testes / Run the tests
+$ npm jest || yarn jest
+
 # Para acessar o código, caso utiliza vscode, execute no terminal / To access the code, if you use vscode, run in the terminal
 $ code .
