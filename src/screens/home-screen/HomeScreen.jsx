@@ -2,12 +2,15 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchData } from 'store/ducks/home/actions'
 
+import { Loader } from 'components/loader/loader'
 import * as C from 'components'
+import * as Styled from 'components/styled-components'
 
 export const HomeScreen = () => {
   const [loanValue, setLoan] = useState('')
   const [rawLoanValue, setRawLoanValue] = useState('')
   const [installmentValue, setInstallmentValue] = useState('')
+  const [selectedInstallment, setSelectedInstallment] = useState('')
 
   const dispatch = useDispatch()
 
@@ -63,30 +66,61 @@ export const HomeScreen = () => {
     }
   }
 
+  const handleSelectInstallment = (installment) => {
+    setSelectedInstallment(installment)
+  }
+
+  const handleSubmit = () => {
+    console.log(selectedInstallment, loanValue)
+  }
+
   return (
-    <>
-      {valoresEmprestimo && !loading ? (
-        <>
-          <C.BoxLoan valueLoan={loanValue} valueRaw={rawLoanValue} />
-          <C.SliderComponent
-            loanOptions={valoresEmprestimo}
-            handleChange={handleChangeSlider}
-          />
-          <h5>Selecione a quantidade de parcelas</h5>
-          {prazos.map((prazo, index) => {
-            return (
-              <C.ButtonInstallment
-                key={index + 1}
-                valueMonth={prazo}
-                valueInstallment={installmentValue[index]}
+    <Styled.Wrapper>
+      <Styled.Content>
+        <Styled.Span>
+          <h4>Valor Solicitado</h4>
+        </Styled.Span>
+        {valoresEmprestimo && !loading ? (
+          <>
+            <Styled.NewBox>
+              <C.BoxLoan valueLoan={loanValue} valueRaw={rawLoanValue} />
+              <C.SliderComponent
+                loanOptions={valoresEmprestimo}
+                handleChange={handleChangeSlider}
               />
-            )
-          })}
-        </>
-      ) : (
-        <p>Carregando...</p>
-      )}
-      {error && <p>erro</p>}
-    </>
+              <Styled.Text>
+                <h5>Selecione a quantidade de parcelas</h5>
+              </Styled.Text>
+            </Styled.NewBox>
+            <Styled.Container>
+              {prazos.map((prazo, index) => {
+                return (
+                  <C.ButtonInstallment
+                    key={index + 1}
+                    handleClick={handleSelectInstallment}
+                    valueMonth={prazo}
+                    valueInstallment={installmentValue[index]}
+                  />
+                )
+              })}
+            </Styled.Container>
+            <Styled.Box>
+              <Styled.Button onClick={() => handleSubmit()}>
+                Gostei, continuar
+              </Styled.Button>
+              <h6>
+                Taxa de 1.09% ao mês. Valor da primeira - Sistema de
+                Automatização constante (suas parcelas diminuem com o tempo)
+              </h6>
+            </Styled.Box>
+          </>
+        ) : (
+          <Styled.Box>
+            <Loader />
+          </Styled.Box>
+        )}
+        {error && <p>erro</p>}
+      </Styled.Content>
+    </Styled.Wrapper>
   )
 }

@@ -13,7 +13,8 @@
     "tests",
     "**/*.js",
     "**/*.jsx"
-  ],
+, "public/__mocks__",
+".jest/setup.js" ],
   "exclude": [
     "node_modules"
   ]

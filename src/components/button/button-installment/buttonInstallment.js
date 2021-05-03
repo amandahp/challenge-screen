@@ -1,20 +1,28 @@
 import React from 'react'
 
+import * as Styled from './button-installmente.styled'
+
 export const ButtonInstallment = ({
   valueMonth = '',
-  valueInstallment = ''
+  valueInstallment = '',
+  handleClick
 }) => {
   return (
     <>
-      <button>
-        <h4>{valueMonth}</h4>
-        <h3>
+      <Styled.Button
+        onClick={() => {
+          handleClick(valueInstallment)
+        }}
+      >
+        <h4>{valueMonth} meses</h4>
+        <h2>
+          {' '}
           {valueInstallment.toLocaleString('pt-BR', {
             style: 'currency',
             currency: 'BRL'
           })}
-        </h3>
-      </button>
+        </h2>
+      </Styled.Button>
     </>
   )
 }
