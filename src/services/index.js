@@ -1,1 +1,1 @@
-export { getInstallment } from './installment'
+export { getInstallment } from './installmentApi/installment'

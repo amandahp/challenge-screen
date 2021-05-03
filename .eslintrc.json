@@ -26,6 +26,9 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "no-unused-expressions": "off",
+    "no-unused-vars": "warn"
+
   }
 }

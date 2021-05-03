@@ -1,12 +1,20 @@
-import { call, put } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
+
+import { getInstallment } from 'services/index'
 import { fetchDataSuccess, fetchDataError } from './actions'
 
-export function* getData() {
+function* getData() {
+  console.log('saga')
   try {
-    const data = yield call(getData)
-    yield put(fetchDataSuccess(data))
+    const response = yield call(getInstallment)
+    response.data.parcelas.reverse()
+    yield put(fetchDataSuccess(response.data))
   } catch (err) {
     yield put(fetchDataError(err))
     console.log(err)
   }
+}
+
+export function* watchInstallment() {
+  yield takeLatest('FETCH_DATA', getData)
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { HomeScreen } from 'screens/index'
 export const HomePage = () => {
-  return <p>Home</p>
+  return <HomeScreen />
 }

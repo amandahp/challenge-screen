@@ -4,10 +4,11 @@ export function fetchData() {
   }
 }
 
-export function fetchDataSuccess(data) {
+export function fetchDataSuccess(payload) {
+  console.log('aqui', payload)
   return {
     type: 'FETCH_DATA_SUCCESS',
-    data
+    payload
   }
 }
 
